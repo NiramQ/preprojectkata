@@ -2,10 +2,8 @@ package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.service.UserServiceImpl;
 
-import java.sql.SQLException;
-
 public class Main {
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+    public static void main(String[] args) {
         UserServiceImpl x = new UserServiceImpl();
         x.createUsersTable();
         x.saveUser("Олег", "Вещий", (byte) 10);
