@@ -62,6 +62,6 @@ public class User {
 
     @Override
     public String toString() {
-        return getId() + "# имя:" + getName() + ", фамилия:" +  getLastName() + ", возраст:" + getAge();
+        return getId() + "# " + getName() + " " + getLastName() + "(" + getAge() + ")";
     }
 }
