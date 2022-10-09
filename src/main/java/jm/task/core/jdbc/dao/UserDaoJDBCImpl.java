@@ -22,7 +22,7 @@ public class UserDaoJDBCImpl implements UserDao {
         }
     }
 
-    private Connection getConn(){
+    private Connection getConn() {
         Util util = new Util();
         Connection connection;
         try {
@@ -32,6 +32,7 @@ public class UserDaoJDBCImpl implements UserDao {
         }
         return connection;
     }
+
     public UserDaoJDBCImpl() {
 
     }
