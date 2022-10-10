@@ -75,7 +75,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void cleanUsersTable() {
-        String sql = "DROP TABLE if exists usersmod";
+        String sql = "TRUNCATE TABLE usersmod";
         try (PreparedStatement ps = util.getConnection().prepareStatement(sql)) {
             ps.executeUpdate(sql);
         } catch (SQLException | ClassNotFoundException e) {
