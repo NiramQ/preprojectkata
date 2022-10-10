@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name="Usersmod")
+@Table(name = "Usersmod")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,20 +63,22 @@ public class User {
     }
 
     @Override
-    public String toString() {
-        return getId() + "# " + getName() + " " + getLastName() + "(" + getAge() + ")";
-    }
-    @Override
-    public int hashCode(){
-        int result = 31 * this.toString().hashCode();
-        return result;
-    }
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return Objects.equals(this.name, user.getName()) && Objects.equals(this.lastName, user.getLastName())
                 && Objects.equals(this.age, user.age) && Objects.equals(this.id, user.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 31 * this.toString().hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return getId() + "# " + getName() + " " + getLastName() + "(" + getAge() + ")";
     }
 }

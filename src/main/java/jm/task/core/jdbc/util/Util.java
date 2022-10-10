@@ -3,7 +3,6 @@ package jm.task.core.jdbc.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 
 public class Util {
 
@@ -21,14 +20,5 @@ public class Util {
         String connectionURL = "jdbc:mysql://" + hostname + ":3306/" + dbName;
         Connection conn = DriverManager.getConnection(connectionURL, userName, password);
         return conn;
-    }
-    public Properties propertiesHibernate() {
-        Properties prop = new Properties();
-        prop.setProperty("hibernate.connection.url", "jdbc:mysql://" + hostName + ":3306/" + dbName);
-        prop.setProperty("dialect", "org.hibernate.dialect.MySQL");
-        prop.setProperty("hibernate.connection.username", userName);
-        prop.setProperty("hibernate.connection.password", password);
-        prop.setProperty("hibernate.connection.driver_class", "com.mysql.cj.jdbc.Driver");
-        return prop;
     }
 }

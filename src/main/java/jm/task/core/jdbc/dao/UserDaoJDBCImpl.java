@@ -9,13 +9,11 @@ import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
     private List<User> listUser = new ArrayList<>();
-
+    private Util util = new Util();
 
     public UserDaoJDBCImpl() {
 
     }
-
-    Util util = new Util();
 
     public void createUsersTable() {
         String sql = "CREATE TABLE if not exists Usersmod (id BIGINT UNSIGNED auto_increment, name VARCHAR(50), lastName VARCHAR(50), age TINYINT UNSIGNED, PRIMARY KEY (id));";
