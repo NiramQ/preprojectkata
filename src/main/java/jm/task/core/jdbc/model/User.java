@@ -1,21 +1,23 @@
 package jm.task.core.jdbc.model;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Objects;
 
-@Table
+@Entity
+@Table(name="Usersmod")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
-    @Column
+    @Column(name = "lastName")
     private String lastName;
 
-    @Column
+    @Column(name = "age")
     private Byte age;
 
     public User() {
@@ -63,5 +65,18 @@ public class User {
     @Override
     public String toString() {
         return getId() + "# " + getName() + " " + getLastName() + "(" + getAge() + ")";
+    }
+    @Override
+    public int hashCode(){
+        int result = 31 * this.toString().hashCode();
+        return result;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(this.name, user.getName()) && Objects.equals(this.lastName, user.getLastName())
+                && Objects.equals(this.age, user.age) && Objects.equals(this.id, user.getId());
     }
 }
