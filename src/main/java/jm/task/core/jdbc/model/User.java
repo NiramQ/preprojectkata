@@ -1,27 +1,25 @@
 package jm.task.core.jdbc.model;
 
-import javax.persistence.*;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "Usersmod")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
     private Long id;
-
-    @Column(name = "name")
     private String name;
-
-    @Column(name = "lastName")
     private String lastName;
-
-    @Column(name = "age")
     private Byte age;
 
     public User() {
-
     }
 
     public User(String name, String lastName, Byte age) {
@@ -31,7 +29,7 @@ public class User {
     }
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -39,7 +37,7 @@ public class User {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -47,7 +45,7 @@ public class User {
     }
 
     public String getLastName() {
-        return lastName;
+        return this.lastName;
     }
 
     public void setLastName(String lastName) {
@@ -55,30 +53,31 @@ public class User {
     }
 
     public Byte getAge() {
-        return age;
+        return this.age;
     }
 
     public void setAge(Byte age) {
         this.age = age;
     }
 
-    @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(this.name, user.getName()) && Objects.equals(this.lastName, user.getLastName())
-                && Objects.equals(this.age, user.age) && Objects.equals(this.id, user.getId());
+        if (this == o) {
+            return true;
+        } else if (o != null && this.getClass() == o.getClass()) {
+            User user = (User)o;
+            return Objects.equals(this.name, user.getName()) && Objects.equals(this.lastName, user.getLastName()) && Objects.equals(this.age, user.age) && Objects.equals(this.id, user.getId());
+        } else {
+            return false;
+        }
     }
 
-    @Override
     public int hashCode() {
         int result = 31 * this.toString().hashCode();
         return result;
     }
 
-    @Override
     public String toString() {
-        return getId() + "# " + getName() + " " + getLastName() + "(" + getAge() + ")";
+        Long x = this.getId();
+        return "" + x + "# " + this.getName() + " " + this.getLastName() + "(" + this.getAge() + ")";
     }
 }
